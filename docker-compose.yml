@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+    api_generate_fake_data_php_8_2:
+        container_name: api_generate_fake_data
+        build: 
+            context: ./.build/php/
+            args:
+                - CUSTOM_NAME=application    
+        ports: 
+            - "8000:80"
+        volumes:
+            - ./api:/var/www/html
