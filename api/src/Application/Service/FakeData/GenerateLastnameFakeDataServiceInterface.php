@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Application\Service\FakeData;
 
-interface GenerateFakeDataInterface 
+interface GenerateLastnameFakeDataServiceInterface
 {
-    public function getFirstname(): string;
     public function getLastname(): string;
 }

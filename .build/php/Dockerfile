@@ -1,6 +1,7 @@
 FROM php:8.2-apache 
 
 ARG CUSTOM_NAME=www-data
+ARG DEBUG=0
 
 RUN apt-get update -y
 
@@ -9,6 +10,13 @@ RUN apt-get install -y \
     libz-dev \
     libzip-dev \
     libicu-dev 
+
+RUN if [ "1" = "$DEBUG" ]; then \   
+ pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+ ; else \
+ echo 'Skip install debug package' ; \   
+fi;
 
 RUN docker-php-ext-install zip intl
 RUN docker-php-ext-enable zip sodium intl

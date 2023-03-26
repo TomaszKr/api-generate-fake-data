@@ -6,7 +6,8 @@ services:
         build: 
             context: ./.build/php/
             args:
-                - CUSTOM_NAME=application    
+                - CUSTOM_NAME=application
+                - DEBUG=1    
         ports: 
             - "8000:80"
         volumes:

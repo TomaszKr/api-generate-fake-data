@@ -6,9 +6,9 @@ namespace Infrastructure\FakerPHP\Service;
 
 use Faker\Factory;
 use Faker\Generator;
-use Application\Service\FakeData\GenerateFakeDataInterface;
+use Application\Service\FakeData\GenerateFakeDataServiceInterface;
 
-final class Faker implements GenerateFakeDataInterface 
+final class FakerService implements GenerateFakeDataServiceInterface 
 {
     private readonly Generator $fackerFactory;
 
