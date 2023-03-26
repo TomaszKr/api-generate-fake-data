@@ -9,17 +9,18 @@ use Domain\Person\Aggregate\PersonAggregate;
 use Domain\Person\ValueObject\Firstname;
 use Domain\Person\ValueObject\Lastname;
 
-final class PersonService {
-
+final class PersonService
+{
     public function __construct(
         private readonly GenerateFakeDataServiceInterface $generateFakeData
-    ) {}
-
-    public function handle(): PersonAggregate {
-        return new PersonAggregate(
-                new Firstname($this->generateFakeData->getFirstname()),
-                new Lastname($this->generateFakeData->getLastname())
-        );
+    ) {
     }
 
+    public function handle(): PersonAggregate
+    {
+        return new PersonAggregate(
+            new Firstname($this->generateFakeData->getFirstname()),
+            new Lastname($this->generateFakeData->getLastname())
+        );
+    }
 }
