@@ -65,7 +65,8 @@
             "@auto-scripts"
         ],
         "test": "bin/phpunit",
-        "test-coverage": "php -dxdebug.mode=coverage bin/phpunit --coverage-html ./var/coverage"
+        "test-coverage": "php -dxdebug.mode=coverage bin/phpunit --coverage-html ./var/coverage",
+        "ecs": "vendor/bin/ecs check src --fix && vendor/bin/ecs check tests --fix"
     },
     "conflict": {
         "symfony/symfony": "*"
