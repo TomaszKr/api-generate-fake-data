@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: API generator fake data
+  description: Projekt API for generate fake data to test aplication before production used.
+  version: 0.0.1
+  
+servers:
+  - url: http://localhost:8000/
+    description: Optional server description, e.g. Internal staging server for testing
+
+paths:
+  /api/v1/person:
+    get:
+      tags:
+        - Person
+      summary: Base informations about Person.
+      description: >
+        Work when you have once short link.
+      responses:
+        200:
+          content:
+            application/json:
+                schema:
+                  type: object
+                  properties:
+                    firstname:
+                      type: string
+                      example: "Tom"
+                    lastname:
+                      type: string
+                      example: "King"
