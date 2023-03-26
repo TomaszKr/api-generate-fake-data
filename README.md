@@ -1,1 +1,1 @@
-# api-generator-fake-data
+# api-generate-fake-data
