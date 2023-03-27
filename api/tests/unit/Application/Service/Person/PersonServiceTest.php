@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Application\Service\Person;
+namespace Tests\Unit\Application\Service\Person;
 
 use Application\Service\FakeData\GenerateFakeDataServiceInterface;
 use Application\Service\Person\PersonService;

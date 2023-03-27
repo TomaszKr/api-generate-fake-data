@@ -65,6 +65,8 @@
             "@auto-scripts"
         ],
         "test": "bin/phpunit",
+        "test-unit": "bin/phpunit --configuration phpunit.xml.dist --testsuite unit",
+        "test-integration": "bin/phpunit --configuration phpunit.xml.dist --testsuite integration",
         "test-coverage": "php -dxdebug.mode=coverage bin/phpunit --coverage-html ./var/coverage",
         "ecs": "vendor/bin/ecs check src --fix && vendor/bin/ecs check tests --fix"
     },

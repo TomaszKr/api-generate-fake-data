@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Application\Service\FakeData;
+namespace Tests\Unit\Application\Service\FakeData;
 
 use Application\Service\FakeData\GenerateFakeDataServiceInterface;
 use PHPUnit\Framework\TestCase;
