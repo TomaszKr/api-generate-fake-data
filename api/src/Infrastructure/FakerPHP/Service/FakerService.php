@@ -26,4 +26,9 @@ final class FakerService implements GenerateFakeDataServiceInterface
     {
         return $this->fackerFactory->lastname();
     }
+
+    public function getEmail(): string
+    {
+        return $this->fackerFactory->email();
+    }
 }

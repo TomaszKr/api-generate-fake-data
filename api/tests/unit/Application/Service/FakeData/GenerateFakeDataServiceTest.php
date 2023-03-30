@@ -19,6 +19,7 @@ final class GenerateFakeDataServiceTest extends TestCase
 
         $this->generateFakeDataService->method('getFirstname')->willReturn('Firstname');
         $this->generateFakeDataService->method('getLastname')->willReturn('Lastname');
+        $this->generateFakeDataService->method('getEmail')->willReturn('Email');
     }
 
     protected function tearDown(): void
@@ -36,5 +37,10 @@ final class GenerateFakeDataServiceTest extends TestCase
     public function testMethodGetLastnameThatReturnLastname(): void
     {
         $this->assertSame('Lastname', $this->generateFakeDataService->getLastname());
+    }
+
+    public function testMethodGetLastnameThatReturnEmail(): void
+    {
+        $this->assertSame('Email', $this->generateFakeDataService->getEmail());
     }
 }

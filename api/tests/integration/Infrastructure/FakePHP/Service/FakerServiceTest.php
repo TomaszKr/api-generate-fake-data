@@ -36,4 +36,18 @@ final class FakePHPServiceTest extends KernelTestCase
 
         $this->assertTrue(method_exists($fakePHPService, 'getLastname'));
     }
+
+    public function testMethodGetEmailExist(): void
+    {
+        // (1) boot the Symfony kernel
+        self::bootKernel();
+
+        // (2) use static::getContainer() to access the service container
+        $container = static::getContainer();
+
+        // (3) run some service & test the result
+        $fakePHPService = $container->get(FakerService::class);
+
+        $this->assertTrue(method_exists($fakePHPService, 'getEmail'));
+    }
 }

@@ -1,6 +1,24 @@
 {
+    "name": "tomasz-kr/api-generate-fake-data",
+    "description": "The project provides for the generation of fake data for testing purposes.",
+    "keywords": [
+        "fake data",
+        "api fake data",
+        "php"
+    ],
+    "authors": [
+        {
+            "name": "Tomasz Król",
+            "email": "support-api-generate-fake-data@tomaszkrol.eu",
+            "homepage": "https://tomaszkrol.eu",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support-api-generate-fake-data@tomaszkrol.eu"
+    },
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {

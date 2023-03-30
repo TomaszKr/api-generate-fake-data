@@ -35,7 +35,7 @@ Or tests with coverage HTML
 
 ## Support
 
-For support, email api-generate-fake-data@tomaszkrol.eu or contact form on tomaszkrol.eu
+For support, email support-api-generate-fake-data@tomaszkrol.eu or contact form on tomaszkrol.eu
 
 
 ## Authors

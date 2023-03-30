@@ -16,6 +16,8 @@ services:
     Application\:
         resource: '../src/Application'
         tags: ['controller.service_arguments']
+        exclude:
+            - '../src/Application/Query/*'
         
     Infrastructure\:
         resource: '../src/Infrastructure'   

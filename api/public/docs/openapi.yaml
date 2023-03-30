@@ -16,6 +16,14 @@ paths:
       summary: Base informations about Person.
       description: >
         Work when you have once short link.
+      parameters:
+        - in: query
+          name: withEmail
+          schema:
+            type: boolean
+            example: true
+          descriptions: >
+            Flag that extends base informaction about email
       responses:
         200:
           content:
@@ -29,3 +37,6 @@ paths:
                     lastname:
                       type: string
                       example: "King"
+                    email:
+                      type: string
+                      example: "example@mail.com"  
