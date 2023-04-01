@@ -41,7 +41,7 @@ final class PersonControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/api/v1/person?withEmail=true');
+        $client->request('GET', '/api/v1/person?options[]=email');
 
         $finishedData = json_decode($client->getResponse()->getContent(true), true);
         $this->assertArrayHasKey('email', $finishedData);

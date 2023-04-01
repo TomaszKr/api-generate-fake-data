@@ -19,7 +19,7 @@ final class PersonController
     public function handle(Request $request): JsonResponse
     {
         $person = $this->personService->handle(new GetPersonQuery(
-            $this->detectValue($request->query->get('options', null), 'email')
+            $this->detectValue($request->query->all('options'), 'email')
         ));
 
         $data = [
