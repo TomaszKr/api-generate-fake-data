@@ -19,7 +19,7 @@ final class PersonController
     public function handle(Request $request): JsonResponse
     {
         $person = $this->personService->handle(new GetPersonQuery(
-            json_decode($request->query->get('withEmail', 'false'))
+            $this->detectValue($request->query->get('options', null), 'email')
         ));
 
         $data = [
@@ -32,5 +32,14 @@ final class PersonController
         }
 
         return new JsonResponse($data, JsonResponse::HTTP_OK);
+    }
+    
+    private function detectValue(?array $list, $element): bool
+    {
+        if(null === $list){
+            return false;
+        }
+        
+        return isset(array_flip($list)[$element]) ?? false;
     }
 }

@@ -18,12 +18,18 @@ paths:
         Work when you have once short link.
       parameters:
         - in: query
-          name: withEmail
+          name: options[]
+          required: false
           schema:
-            type: boolean
-            example: true
+            type: array
+            items:
+              type: string
+              enum: 
+                  - email
+              example: 
+                  - email
           descriptions: >
-            Flag that extends base informaction about email
+            Additionals information that you needed for extends, for example: email
       responses:
         200:
           content:
