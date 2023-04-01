@@ -6,24 +6,26 @@
 parameters:
 
 services:
-    # default configuration for services in *this* file
     _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        autowire: false      # Automatically injects dependencies in your services.
+        autoconfigure: false # Automatically registers your services as commands, event subscribers, etc.
+        public: false
 
-    # makes classes in src/ available to be used as services
-    # this creates a service per class whose id is the fully-qualified class name
-    Application\:
-        resource: '../src/Application'
-        tags: ['controller.service_arguments']
-        exclude:
-            - '../src/Application/Query/*'
-        
-    Infrastructure\:
-        resource: '../src/Infrastructure'   
-        tags: ['controller.service_arguments']
-        exclude:
-            - '../src/Infrastructure/Kernel.php'
+    Infrastructure\FakerPHP\Service\FakerService:        
+        class: Infrastructure\FakerPHP\Service\FakerService    
+        autowire: false 
+    
+    Application\Service\FakeData\GenerateFakeDataServiceInterface: '@Infrastructure\FakerPHP\Service\FakerService'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    Application\Service\Person\PersonService:
+        class: Application\Service\Person\PersonService
+        autowire: false
+        arguments:
+            - '@Application\Service\FakeData\GenerateFakeDataServiceInterface'
+               
+    Infrastructure\Symfony\Controller\PersonController:        
+        class: Infrastructure\Symfony\Controller\PersonController    
+        autowire: false
+        tags: ['controller.service_arguments']
+        arguments:
+            - '@Application\Service\Person\PersonService'
