@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Infrastructure\Symfony\Controller;
 
+use Application\Extractor\PersonExtractor;
 use Application\Query\Person\GetPersonQuery;
 use Application\Service\Person\PersonService;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,7 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 final class PersonController
 {
     public function __construct(
-        private readonly PersonService $personService
+        private readonly PersonService $personService,
+        private readonly PersonExtractor $personExtrator
     ) {
     }
 
@@ -22,24 +24,18 @@ final class PersonController
             $this->detectValue($request->query->all('options'), 'email')
         ));
 
-        $data = [
-            'firstname' => $person->getFirstname(),
-            'lastname' => $person->getLastname(),
-        ];
-
-        if ($person->getEmail()) {
-            $data['email'] = $person->getEmail();
-        }
-
-        return new JsonResponse($data, JsonResponse::HTTP_OK);
+        return new JsonResponse(
+            $this->personExtrator->extract($person),
+            JsonResponse::HTTP_OK
+        );
     }
-    
+
     private function detectValue(?array $list, $element): bool
     {
-        if(null === $list){
+        if (null === $list) {
             return false;
         }
-        
+
         return isset(array_flip($list)[$element]) ?? false;
     }
 }

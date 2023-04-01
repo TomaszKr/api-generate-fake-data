@@ -17,6 +17,10 @@ services:
     
     Application\Service\FakeData\GenerateFakeDataServiceInterface: '@Infrastructure\FakerPHP\Service\FakerService'
 
+    Application\Extractor\PersonExtractor:
+        class: Application\Extractor\PersonExtractor
+        autowire: false
+        
     Application\Service\Person\PersonService:
         class: Application\Service\Person\PersonService
         autowire: false
@@ -29,3 +33,4 @@ services:
         tags: ['controller.service_arguments']
         arguments:
             - '@Application\Service\Person\PersonService'
+            - '@Application\Extractor\PersonExtractor'
