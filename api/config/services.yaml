@@ -11,18 +11,24 @@ services:
         autoconfigure: false # Automatically registers your services as commands, event subscribers, etc.
         public: false
 
+    Infrastructure\FakerPHP\Factory\FakerServiceFactory: ~    
+    Application\Factory\Extractor\PersonExtractorFactory: ~    
+    Application\Factory\Service\Person\PersonServiceFactory: ~    
+
     Infrastructure\FakerPHP\Service\FakerService:        
-        class: Infrastructure\FakerPHP\Service\FakerService    
+        factory: '@Infrastructure\FakerPHP\Factory\FakerServiceFactory'   
         autowire: false 
     
     Application\Service\FakeData\GenerateFakeDataServiceInterface: '@Infrastructure\FakerPHP\Service\FakerService'
 
-    Application\Extractor\PersonExtractor:
-        class: Application\Extractor\PersonExtractor
+    application.extractor.person:
+        class: Application\Extractor\PersonExtractor 
+        factory: '@Application\Factory\Extractor\PersonExtractorFactory'
         autowire: false
         
-    Application\Service\Person\PersonService:
+    application.service.person.person:
         class: Application\Service\Person\PersonService
+        factory: '@Application\Factory\Service\Person\PersonServiceFactory'
         autowire: false
         arguments:
             - '@Application\Service\FakeData\GenerateFakeDataServiceInterface'
@@ -32,5 +38,5 @@ services:
         autowire: false
         tags: ['controller.service_arguments']
         arguments:
-            - '@Application\Service\Person\PersonService'
-            - '@Application\Extractor\PersonExtractor'
+            - '@application.service.person.person'
+            - '@application.extractor.person'
